@@ -55,8 +55,8 @@ namespace core
     class Object : public Node
     {
         public:
-            bool active;
             Object* p_parent;
+            bool active;       
             std::vector<Object*> p_objects;
             std::vector<Component*> p_components;
 

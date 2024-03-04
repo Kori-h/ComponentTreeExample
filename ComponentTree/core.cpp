@@ -17,7 +17,7 @@ namespace core
 
     }
 
-    Object::Object() : active(false), p_objects(), p_components()
+    Object::Object() : p_parent(nullptr), active(false), p_objects(), p_components()
     {
 
     }
