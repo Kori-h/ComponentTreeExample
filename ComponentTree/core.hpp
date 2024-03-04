@@ -42,21 +42,25 @@ namespace core
     class Component : public Node
     {
         public:
-            Component(size_t id) : p_parent(nullptr), active(false), id(id) {};
-
-            void init() override;
-            void update() override;
-
             Object* p_parent;
             bool active;
             size_t id;
+
+            Component(size_t id);
+
+            void init() override;
+            void update() override;     
     };
 
     class Object : public Node
     {
         public:
+            bool active;
+            Object* p_parent;
             std::vector<Object*> p_objects;
             std::vector<Component*> p_components;
+
+            Object();     
 
             void init() override;
             void update() override;
@@ -65,6 +69,9 @@ namespace core
             std::enable_if_t<std::is_base_of<Object, T>::value, T*> createObject()
             {
                 T* p_object = new T();
+                p_object->active = true;
+                p_object->p_parent = this;
+                p_object->init();
                 p_objects.push_back(static_cast<Object*>(p_object));
                 return p_object;
             }

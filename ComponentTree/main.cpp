@@ -1,3 +1,7 @@
+//
+//  Basic Component Tree Architecture
+//  
+
 #include <crtdbg.h>
 #include "components.hpp"
 #include "render_system.hpp"
@@ -11,6 +15,7 @@ int main(void)
     // Root
     p_root = new core::Object();
   
+    // Create objects
     core::Object* obj = p_root->createObject<core::Object>();
     
     obj->createComponent<core::TransformComponent>();
@@ -22,7 +27,7 @@ int main(void)
         obj2->createComponent<core::TransformComponent>();
         obj2->createComponent<core::RenderComponent>(); 
     }
-
+    
     for (size_t j = 0; j < 3; j++)
     {
         core::Object* obj3 = obj->getObject<core::Object>(2)->createObject<core::Object>();
@@ -45,5 +50,6 @@ int main(void)
         core::system::RenderSystem::getInstance().render();
     }
 
+    // Free objects
 	deleteObject(p_root);
 }

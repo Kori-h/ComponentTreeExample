@@ -2,12 +2,22 @@
 
 namespace core
 {
+    Component::Component(size_t id) : p_parent(nullptr), active(false), id(id)
+    {
+
+    }
+
     void Component::init()
     {
 
     }
 
     void Component::update()
+    {
+
+    }
+
+    Object::Object() : active(false), p_objects(), p_components()
     {
 
     }
@@ -51,7 +61,11 @@ namespace core
                 stack.push(p_object);
             }
 
-            current->update();
+            if (current->active)
+            {
+                current->update();
+            }
+
             ++update_count;
         }
 

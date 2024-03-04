@@ -2,6 +2,11 @@
 
 namespace core 
 {
+	RenderComponent::RenderComponent() : Component{ TypeHash<RenderComponent>::value }, p_transform_component(nullptr) 
+	{
+
+	}
+
 	void RenderComponent::init()
 	{
 		p_transform_component = p_parent->getComponent<TransformComponent>();

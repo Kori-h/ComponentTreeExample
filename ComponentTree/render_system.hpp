@@ -9,7 +9,7 @@ namespace core
 	class RenderComponent : public Component
 	{
 		public:
-			RenderComponent() : Component{ TypeHash<RenderComponent>::value }, p_transform_component(nullptr) {};
+			RenderComponent();
 
 			void init() override;
 			void update() override;
